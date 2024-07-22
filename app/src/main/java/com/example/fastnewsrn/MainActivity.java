@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         profileName = headerView.findViewById(R.id.profileName);
         appName = headerView.findViewById(R.id.appName);
 
-        // Set profile name and app name (replace with actual user and app name)
+
         profileName.setText("Rishabh Nagar");
         appName.setText(getString(R.string.app_name));
 
@@ -77,13 +77,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void fetchNews() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://newsapi.org/v2/")  // Add your base URL here
+                .baseUrl("https://newsapi.org/v2/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         NewsApiService newsApiService = retrofit.create(NewsApiService.class);
 
-        // Example call for top headlines in the US with a demo API key (replace with your own key)
         Call<NewsResponse> call = newsApiService.getTopHeadlines("us", "6634b775cba847e1802df4ed33f2d8c6");
         call.enqueue(new Callback<NewsResponse>() {
             @Override
